@@ -52,7 +52,7 @@ router.route('/')
 
 router.route('/:id')
 .get(function(req, res) {
-  client.connect(err => {
+  /*client.connect(err => {
     client.db("GoVirtuo").collection("stations").find().toArray(function(err, result) {
       if (err)
       {
@@ -61,7 +61,8 @@ router.route('/:id')
       }
       res.status(200).send(result);
     });
-  });
+  });*/
+  return res.status(404).send("Route Not configured yet");
 })
 .put(function(req, res) {
   return res.status(404).send("Route Not configured yet");
