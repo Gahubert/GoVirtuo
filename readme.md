@@ -9,4 +9,4 @@ The server will be running on **"http://localhost:3000"**.
 
 The two possibles routes are **".../cars"** and **".../stations"**.
 
-You can access a specified car or station by adding it's id like this : ".../cars/[the id of the car]".
+You can access a specified car or station by adding it's id like this : **".../cars/[the id of the car]"**.
