@@ -1,6 +1,7 @@
 var express = require('express');
 var config = require('../config');
 var bodyParser = require('body-parser');
+var functions = require('../functions');
 var client = require('../db');
 
 var router = express.Router();
@@ -33,9 +34,9 @@ router.route('/')
         client.close();
         return res.status(500).send("Error while trying to access 'stations' collection");
       }
-      var count = result.length;
+      var free_id = functions.get_free_id(result);
       collection.insertOne({
-        _id: count + 1,
+        _id: free_id,
         name: data.name
       }, function(err2, result2) {
         if (err2)
