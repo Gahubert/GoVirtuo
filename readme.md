@@ -1,4 +1,4 @@
-#Go Virtuo Test project
+# Go Virtuo Test project
 This project has been devlopped by Gabriel Hubert.
 
 To install dependencies, please use the command "npm install" at the root of the repository.
