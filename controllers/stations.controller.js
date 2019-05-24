@@ -22,16 +22,29 @@ router.route('/')
   client.close();
 })
 .post(function(req, res) {
+  data = req.body;
+  if (!data.name)
+    return res.status(422).send("Incorrect Request: 'name' is missing in request body");
   client.connect(err => {
-    client.db("GoVirtuo").collection("stations").insertOne({
-
-    }, function(err, res) {
+    var collection = client.db("GoVirtuo").collection("stations");
+    collection.find().toArray(function(err, result) {
       if (err)
       {
         client.close();
-        return res.status(500).send("Error while trying to add document to 'stations' collection");
+        return res.status(500).send("Error while trying to access 'stations' collection");
       }
-      res.status(200).send(res);
+      var count = result.length;
+      collection.insertOne({
+        _id: count + 1,
+        name: data.name
+      }, function(err2, result2) {
+        if (err2)
+        {
+          client.close();
+          return res.status(500).send("Error while trying to add document to 'stations' collection");
+        }
+        res.status(200).send(result2.ops[0]);
+      });
     });
   });
   client.close();
@@ -49,9 +62,6 @@ router.route('/:id')
       res.status(200).send(result);
     });
   });
-})
-.post(function(req, res) {
-  return res.status(404).send("Route Not configured yet");
 })
 .put(function(req, res) {
   return res.status(404).send("Route Not configured yet");

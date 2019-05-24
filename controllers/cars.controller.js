@@ -29,9 +29,6 @@ router.route('/:id')
 .get(function(req, res) {
   return res.status(404).send("Route Not configured yet");
 })
-.post(function(req, res) {
-  return res.status(404).send("Route Not configured yet");
-})
 .put(function(req, res) {
   return res.status(404).send("Route Not configured yet");
 })
