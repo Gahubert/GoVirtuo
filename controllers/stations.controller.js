@@ -53,6 +53,8 @@ router.route('/')
 
 router.route('/:id')
 .get(function(req, res) {
+  //Running out of time
+  
   /*client.connect(err => {
     client.db("GoVirtuo").collection("stations").find().toArray(function(err, result) {
       if (err)
